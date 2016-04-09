@@ -50,8 +50,18 @@
 
     <!-- Custom Theme JavaScript -->
     <script>
-    PREFIXES = ["Ebola", "Basura", "Supreme Flow"];
-    NOUNS = ["Breakers", "Technique", "Kings"];
+    PREFIXES = ["Ebola", "Basura", "Supreme Flow", "Elemental", "Style",
+                "Mumps", "Flying", "Mediocre", "Technical", "Stupid", "Mighty Morphin'",
+                "Teenage Mutant Ninja", "One Punch", "Ginyu", "Rhythmically Challenged", 
+                "Orb", "Fresh", "Steady", "Funky", "Smooth", "Swift", "Soul", "Fusion",
+                "Mighty", "Floor", "Visual", "Super Saiyan", "Flava", "Fellowship of The",
+                "Dynamic", "Tactical", "Quick", "Brotherhood of",
+                ];
+    NOUNS = ["Breakers", "Technique", "Kings", "Rockers", "Kidz", "Pirates",
+             "Patrol", "Chocobos", "Rangers", "White Mages", "Dragoons", "Ninjas", 
+             "Ass-ass-ins", "Man", "Twerkers", "Queens", "Methods", "Tribe", "Republic",
+             "Monkeys", "Steps", "Force", "Corps", "Gang", "Division",
+             "Players", "Lords", "Samurais", "Ronin"];
     // Closes the sidebar menu
     $("#menu-close").click(function(e) {
         e.preventDefault();
@@ -74,9 +84,17 @@
 
     function generateName()
     {
+        name = "";
+        prefixProb = 0.5;
         prefixIndex = getRandomInt(0, PREFIXES.length);
         nounIndex = getRandomInt(0, NOUNS.length);
-        return PREFIXES[prefixIndex] + " " + NOUNS[nounIndex];
+        name = PREFIXES[prefixIndex] + " " + name;
+        while (Math.random() < prefixProb) {
+            prefixIndex = getRandomInt(0, PREFIXES.length);
+            name = PREFIXES[prefixIndex] + " " + name;
+            prefixProb = prefixProb - 0.1;
+        }
+        return name + " " + NOUNS[nounIndex];
     }
 
     // Scrolls to the selected menu item on the page
